@@ -1,0 +1,20 @@
+# Data (auto-downloaded on first run)
+**/data/*
+!**/data/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Kaggle cache
+.kaggle/
