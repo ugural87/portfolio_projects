@@ -45,7 +45,7 @@ project type demands:
 | # | Project | Domain | Status |
 |---|---------|--------|--------|
 | 1 | [Bank Customer Churn](./bank-churn/) | Retail banking / retention | ✅ Complete |
-| 2 | Credit Risk Modelling | Retail credit / PD estimation | Planned |
+| 2 | [Credit Risk Modelling](./credit-risk/) | Retail credit / PD estimation | ✅ Complete |
 | 3 | Customer Segmentation | Marketing analytics / unsupervised | Planned |
 | 4 | Fraud Detection | Payments / anomaly detection | Planned |
 | 5 | Classical Time Series Analysis | Sensor & financial data / statistical TS | Planned |
@@ -68,13 +68,17 @@ building on the last:
 | `05_decision_analysis` | Calibration, cost-matrix-derived optimal contact threshold, sensitivity analysis over the economic assumptions, campaign sizing, five concrete business proposals |
 | `06_causal_propensity` | From association to causation: propensity-score analysis (IPW, caliper matching, g-computation) of the activation lever, with balance diagnostics and honest limitations |
 
-### 2. Credit Risk Modelling
+### 2. Credit Risk Modelling ✅
 
-Probability-of-default estimation in the language the industry actually uses:
-scorecard-style logistic modelling with binning/WoE, gradient-boosted challengers,
-probability calibration (essential — PD feeds pricing and provisioning), discrimination
-and stability metrics (AUC/Gini, KS, PSI), and a discussion connecting model outputs to
-IFRS 9 staging logic and expected-loss components (PD × LGD × EAD).
+Probability-of-default modelling carried all the way to the number a bank actually
+books: a staged, scenario-weighted **IFRS 9 expected credit loss** with every assumption
+stated and stress-tested. Three notebooks:
+
+| Notebook | Content |
+|---|---|
+| `01_eda_analysis` | Data-quality audit with documented cleaning rules, informative-missingness analysis, and a statistical association battery: chi-square/Cramér's V, Mann-Whitney, mutual information, WoE/Information Value |
+| `02_xgboost_model` | Leakage-free pipeline (in-pipeline imputation + missing indicators, SMOTE in CV folds), two-stage hyperparameter search, full evaluation (ROC/PR, Gini, confusion matrices), gain + SHAP importance — closing with a measured comparison of statistical vs model importance and where the two rankings diverge |
+| `03_ifrs9_ecl` | Isotonic calibration → PD, SICR staging with relative and backstop rules, explicit LGD/EAD/maturity assumptions, probability-weighted scenarios, and a sensitivity disclosure of the provision to its assumption set |
 
 ### 3. Customer Segmentation
 
