@@ -1,4 +1,5 @@
 [README.md](https://github.com/user-attachments/files/30325989/README.md)
+
 # Data Science Portfolio
 
 A collection of end-to-end data science projects built around one idea: **models are not
@@ -43,15 +44,15 @@ project type demands:
 
 ## Projects
 
-| # | Project | Domain | Status |
-|---|---------|--------|--------|
-| 1 | [Bank Customer Churn](./bank-churn/) | Retail banking / retention | ✅ Complete |
-| 2 | [Credit Risk Modelling](./credit-risk/) | Retail credit / PD estimation | ✅ Complete |
-| 3 | [Customer Segmentation](./customer-segmentation/) | Marketing analytics / unsupervised | ✅ Complete |
-| 4 | Fraud Detection | Payments / anomaly detection | Planned |
-| 5 | Classical Time Series Analysis | Sensor & financial data / statistical TS | Planned |
-| 6 | Deep Learning Time Series Forecasting | Markets / sequence modelling | Planned |
-| 7 | NLP & LLM Track | Text / retrieval / generation | Planned |
+| # | Project                                          | Domain                                   | Status      |
+| - | ------------------------------------------------ | ---------------------------------------- | ----------- |
+| 1 | [Bank Customer Churn](./bank-churn/)              | Retail banking / retention               | ✅ Complete |
+| 2 | [Credit Risk Modelling](./credit-risk/)           | Retail credit / PD estimation            | ✅ Complete |
+| 3 | [Customer Segmentation](./customer-segmentation/) | Marketing analytics / unsupervised       | ✅ Complete |
+| 4 | Fraud Detection                                  | Payments / anomaly detection             | Planned     |
+| 5 | Classical Time Series Analysis                   | Sensor & financial data / statistical TS | Planned     |
+| 6 | Deep Learning Time Series Forecasting            | Markets / sequence modelling             | Planned     |
+| 7 | NLP & LLM Track                                  | Text / retrieval / generation            | Planned     |
 
 ---
 
@@ -60,14 +61,14 @@ project type demands:
 Churn as a *decision system*, not a classification exercise. Six notebooks, each
 building on the last:
 
-| Notebook | Content |
-|---|---|
-| `01_eda_analysis` | Detailed EDA — univariate structure, interactions, and the three structural findings that drive every downstream choice |
+| Notebook                   | Content                                                                                                                                                                                |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01_eda`                 | Detailed EDA — univariate structure, interactions, and the three structural findings that drive every downstream choice                                                               |
 | `02_logistic_regression` | The linear yardstick: SMOTE inside the CV pipeline, two-stage hyperparameter search, full evaluation suite (ROC/PR, confusion matrices, threshold analysis), odds-ratio interpretation |
-| `03_xgboost` | Same protocol, XGBoost — SHAP shows the gap over the linear model coming exactly from the non-linearities found in EDA |
-| `04_lightgbm` | Same protocol, LightGBM — plus the series-closing three-model comparison |
-| `05_decision_analysis` | Calibration, cost-matrix-derived optimal contact threshold, sensitivity analysis over the economic assumptions, campaign sizing, five concrete business proposals |
-| `06_causal_propensity` | From association to causation: propensity-score analysis (IPW, caliper matching, g-computation) of the activation lever, with balance diagnostics and honest limitations |
+| `03_xgboost`             | Same protocol, XGBoost — SHAP shows the gap over the linear model coming exactly from the non-linearities found in EDA                                                                |
+| `04_lightgbm`            | Same protocol, LightGBM — plus the series-closing three-model comparison                                                                                                              |
+| `05_decision_analysis`   | Calibration, cost-matrix-derived optimal contact threshold, sensitivity analysis over the economic assumptions, campaign sizing, five concrete business proposals                      |
+| `06_causal_propensity`   | From association to causation: propensity-score analysis (IPW, caliper matching, g-computation) of the activation lever, with balance diagnostics and honest limitations               |
 
 ### 2. Credit Risk Modelling ✅
 
@@ -75,23 +76,23 @@ Probability-of-default modelling carried all the way to the number a bank actual
 books: a staged, scenario-weighted **IFRS 9 expected credit loss** with every assumption
 stated and stress-tested. Three notebooks:
 
-| Notebook | Content |
-|---|---|
-| `01_eda_analysis` | Data-quality audit with documented cleaning rules, informative-missingness analysis, and a statistical association battery: chi-square/Cramér's V, Mann-Whitney, mutual information, WoE/Information Value |
+| Notebook             | Content                                                                                                                                                                                                                                                                                                         |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01_eda`           | Data-quality audit with documented cleaning rules, informative-missingness analysis, and a statistical association battery: chi-square/Cramér's V, Mann-Whitney, mutual information, WoE/Information Value                                                                                                     |
 | `02_xgboost_model` | Leakage-free pipeline (in-pipeline imputation + missing indicators, SMOTE in CV folds), two-stage hyperparameter search, full evaluation (ROC/PR, Gini, confusion matrices), gain + SHAP importance — closing with a measured comparison of statistical vs model importance and where the two rankings diverge |
-| `03_ifrs9_ecl` | Isotonic calibration → PD, SICR staging with relative and backstop rules, explicit LGD/EAD/maturity assumptions, probability-weighted scenarios, and a sensitivity disclosure of the provision to its assumption set |
+| `03_ifrs9_ecl`     | Isotonic calibration → PD, SICR staging with relative and backstop rules, explicit LGD/EAD/maturity assumptions, probability-weighted scenarios, and a sensitivity disclosure of the provision to its assumption set                                                                                           |
 
 ### 3. Customer Segmentation ✅
 
 Unsupervised counterpart to the supervised projects, built around one disciplined
 question: *how much structure does this data actually contain?* Four notebooks:
 
-| Notebook | Content |
-|---|---|
-| `01_eda_rfm` | Transaction-log audit with documented cleaning rules, RFM+ feature construction, skew/log analysis, correlation structure |
-| `02_kmeans` | k selection with three instruments — elbow, silhouette curve, and per-cluster silhouette "knife" plots — then segment profiling and one action per segment |
-| `03_dbscan` | `min_samples` reasoning and k-distance eps selection, an eps grid mapping over-smoothing against fragmentation, knife-plot audit, and noise analysis that turns out to be the project's most valuable output |
-| `04_pca_tsne` | PCA variance, loadings and biplot with named components; t-SNE across a perplexity scan; both clusterings overlaid on both projections |
+| Notebook        | Content                                                                                                                                                                                                        |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `01_eda_rfm`  | Transaction-log audit with documented cleaning rules, RFM+ feature construction, skew/log analysis, correlation structure                                                                                      |
+| `02_kmeans`   | k selection with three instruments — elbow, silhouette curve, and per-cluster silhouette "knife" plots — then segment profiling and one action per segment                                                   |
+| `03_dbscan`   | `min_samples` reasoning and k-distance eps selection, an eps grid mapping over-smoothing against fragmentation, knife-plot audit, and noise analysis that turns out to be the project's most valuable output |
+| `04_pca_tsne` | PCA variance, loadings and biplot with named components; t-SNE across a perplexity scan; both clusterings overlaid on both projections                                                                         |
 
 Three independent methods converge on the verdict that the RFM space is a continuum
 rather than a set of islands — so the segments are presented as useful partitions, and
