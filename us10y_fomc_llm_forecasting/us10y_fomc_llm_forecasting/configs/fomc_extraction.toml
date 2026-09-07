@@ -1,0 +1,14 @@
+start_year = 1993
+model_id = "gpt-5.6-luna"
+reasoning_effort = "medium"
+inference_policy_version = "luna-paid-safe-v3.1"
+primary_output_tokens = 24000
+retry_output_tokens = 48000
+minimum_strict_grounding_ratio = 0.80
+minimum_usable_feature_count = 11
+input_usd_per_million_tokens = 0.20
+output_usd_per_million_tokens = 1.20
+daily_token_limit = 20000000
+hard_run_budget_usd = 30.0
+budget_scope = "production-v1"
+

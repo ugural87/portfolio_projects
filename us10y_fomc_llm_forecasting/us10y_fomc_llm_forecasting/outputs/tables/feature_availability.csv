@@ -1,0 +1,15 @@
+feature,availability_rate
+current_policy_stance,1.0
+policy_stance_shift,1.0
+expected_rate_path_shift,0.9962406015037594
+inflation_assessment_shift,1.0
+inflation_risk_shift,1.0
+unemployment_assessment_shift,1.0
+labor_market_risk_shift,1.0
+growth_activity_shift,1.0
+financial_conditions_shift,1.0
+balance_sheet_policy_shift,0.556390977443609
+risk_balance_shift,1.0
+committee_dispersion,1.0
+policy_uncertainty,1.0
+forward_guidance_strength,1.0

@@ -6,3 +6,26 @@ __pycache__/
 .venv/
 .DS_Store
 .vscode/
+
+# Local credentials and environments
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Generated files
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.DS_Store
+
+# Archives and model weights
+*.zip
+*.pt
+*.pth
+
+# Excluded projects
+/us10y_fomc_llm_forecasting/UA-OHY_time_series/
+/fraud-detection/

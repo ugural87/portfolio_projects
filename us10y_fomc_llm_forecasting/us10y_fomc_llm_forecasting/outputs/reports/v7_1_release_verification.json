@@ -1,0 +1,252 @@
+{
+  "walk_forward_manifest_identical": true,
+  "oos_predictions": {
+    "rows": 178,
+    "folds": 8,
+    "identity_matches_v7": true,
+    "finite": true,
+    "intervals_ordered": true
+  },
+  "model_and_feature_source_identical_to_v7": true,
+  "event_checkpoints": {
+    "count": 32,
+    "all_minimum_validation_loss": true,
+    "all_restored_and_rechecked": true,
+    "state_contract_matches_v7": true,
+    "details": [
+      {
+        "fold": 0,
+        "model": "fusion",
+        "epochs_completed": 38,
+        "selected_epoch": 2,
+        "selected_validation_loss": 1.19467031955719
+      },
+      {
+        "fold": 0,
+        "model": "price_only",
+        "epochs_completed": 42,
+        "selected_epoch": 6,
+        "selected_validation_loss": 1.0653345584869385
+      },
+      {
+        "fold": 0,
+        "model": "rate_only",
+        "epochs_completed": 48,
+        "selected_epoch": 12,
+        "selected_validation_loss": 1.4044504165649414
+      },
+      {
+        "fold": 0,
+        "model": "shuffled_text",
+        "epochs_completed": 50,
+        "selected_epoch": 14,
+        "selected_validation_loss": 1.119204878807068
+      },
+      {
+        "fold": 1,
+        "model": "fusion",
+        "epochs_completed": 46,
+        "selected_epoch": 10,
+        "selected_validation_loss": 1.2670751810073853
+      },
+      {
+        "fold": 1,
+        "model": "price_only",
+        "epochs_completed": 92,
+        "selected_epoch": 56,
+        "selected_validation_loss": 0.9863479733467102
+      },
+      {
+        "fold": 1,
+        "model": "rate_only",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.4661476612091064
+      },
+      {
+        "fold": 1,
+        "model": "shuffled_text",
+        "epochs_completed": 50,
+        "selected_epoch": 14,
+        "selected_validation_loss": 1.2368862628936768
+      },
+      {
+        "fold": 2,
+        "model": "fusion",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.3666279315948486
+      },
+      {
+        "fold": 2,
+        "model": "price_only",
+        "epochs_completed": 48,
+        "selected_epoch": 12,
+        "selected_validation_loss": 1.3383901119232178
+      },
+      {
+        "fold": 2,
+        "model": "rate_only",
+        "epochs_completed": 40,
+        "selected_epoch": 4,
+        "selected_validation_loss": 1.2593908309936523
+      },
+      {
+        "fold": 2,
+        "model": "shuffled_text",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.3583221435546875
+      },
+      {
+        "fold": 3,
+        "model": "fusion",
+        "epochs_completed": 38,
+        "selected_epoch": 2,
+        "selected_validation_loss": 1.263840675354004
+      },
+      {
+        "fold": 3,
+        "model": "price_only",
+        "epochs_completed": 46,
+        "selected_epoch": 10,
+        "selected_validation_loss": 1.2847312688827517
+      },
+      {
+        "fold": 3,
+        "model": "rate_only",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.4067559242248535
+      },
+      {
+        "fold": 3,
+        "model": "shuffled_text",
+        "epochs_completed": 38,
+        "selected_epoch": 2,
+        "selected_validation_loss": 1.282905340194702
+      },
+      {
+        "fold": 4,
+        "model": "fusion",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.505956768989563
+      },
+      {
+        "fold": 4,
+        "model": "price_only",
+        "epochs_completed": 42,
+        "selected_epoch": 6,
+        "selected_validation_loss": 1.2873491048812866
+      },
+      {
+        "fold": 4,
+        "model": "rate_only",
+        "epochs_completed": 44,
+        "selected_epoch": 8,
+        "selected_validation_loss": 1.5556188821792605
+      },
+      {
+        "fold": 4,
+        "model": "shuffled_text",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.5140159130096436
+      },
+      {
+        "fold": 5,
+        "model": "fusion",
+        "epochs_completed": 39,
+        "selected_epoch": 3,
+        "selected_validation_loss": 1.376434564590454
+      },
+      {
+        "fold": 5,
+        "model": "price_only",
+        "epochs_completed": 42,
+        "selected_epoch": 6,
+        "selected_validation_loss": 1.5895318984985352
+      },
+      {
+        "fold": 5,
+        "model": "rate_only",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.4189085960388184
+      },
+      {
+        "fold": 5,
+        "model": "shuffled_text",
+        "epochs_completed": 39,
+        "selected_epoch": 3,
+        "selected_validation_loss": 1.4042534828186035
+      },
+      {
+        "fold": 6,
+        "model": "fusion",
+        "epochs_completed": 40,
+        "selected_epoch": 4,
+        "selected_validation_loss": 1.2310014963150024
+      },
+      {
+        "fold": 6,
+        "model": "price_only",
+        "epochs_completed": 50,
+        "selected_epoch": 14,
+        "selected_validation_loss": 1.2319986820220947
+      },
+      {
+        "fold": 6,
+        "model": "rate_only",
+        "epochs_completed": 39,
+        "selected_epoch": 3,
+        "selected_validation_loss": 1.397360920906067
+      },
+      {
+        "fold": 6,
+        "model": "shuffled_text",
+        "epochs_completed": 40,
+        "selected_epoch": 4,
+        "selected_validation_loss": 1.2393840551376345
+      },
+      {
+        "fold": 7,
+        "model": "fusion",
+        "epochs_completed": 39,
+        "selected_epoch": 3,
+        "selected_validation_loss": 1.360267996788025
+      },
+      {
+        "fold": 7,
+        "model": "price_only",
+        "epochs_completed": 52,
+        "selected_epoch": 16,
+        "selected_validation_loss": 1.4158804416656494
+      },
+      {
+        "fold": 7,
+        "model": "rate_only",
+        "epochs_completed": 37,
+        "selected_epoch": 1,
+        "selected_validation_loss": 1.2699872255325315
+      },
+      {
+        "fold": 7,
+        "model": "shuffled_text",
+        "epochs_completed": 39,
+        "selected_epoch": 3,
+        "selected_validation_loss": 1.367992639541626
+      }
+    ]
+  },
+  "report": {
+    "n_oos": 178,
+    "pooled_interval_coverage": 0.9269662921348315,
+    "fusion_mae_bp": 13.330631674438203,
+    "price_only_mae_bp": 12.15387481174326,
+    "rate_only_mae_bp": 13.191445817168539,
+    "shuffled_text_mae_bp": 13.26191301210674
+  },
+  "status": "PASS"
+}

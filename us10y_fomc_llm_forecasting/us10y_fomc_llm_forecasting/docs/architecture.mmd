@@ -1,0 +1,38 @@
+flowchart TB
+  subgraph S[Authoritative external sources]
+    FRED[FRED Treasury yields and policy rates]
+    FED[Federal Reserve minutes and meeting dates]
+    LUNA[gpt-5.6-luna grounded extraction]
+  end
+
+  subgraph D[Governed data and feature layer]
+    PRICE[Real daily yield panel and causal price cube]
+    DOCS[Document discovery, hashes and release audit]
+    EVENTS[14 semantic features, confidence and availability]
+    GUARDS[Typed contracts, masks and leakage guards]
+  end
+
+  subgraph M[Preserved v7 model architecture]
+    BACKBONE[Pre-FOMC historical backbone]
+    ENCODERS[2D CNN + price Transformer | rate + semantic tokens]
+    CROSS[Bidirectional four-head cross-attention]
+    HEADS[Direction head + ordered q05/q50/q95 head]
+  end
+
+  subgraph E[Walk-forward experimental lifecycle]
+    SPLIT[Purged train / validation / calibration / test folds]
+    SELECT[Train with tqdm | select minimum validation joint loss | restore best checkpoint]
+    CONTROLS[Price-only | rate-only | shuffled-text | fusion]
+    REPORT[Split conformal intervals, paired tests, attention and report]
+  end
+
+  FRED --> PRICE
+  FED --> DOCS
+  DOCS --> LUNA --> EVENTS
+  PRICE --> GUARDS
+  EVENTS --> GUARDS
+  GUARDS --> BACKBONE
+  BACKBONE --> ENCODERS
+  EVENTS --> ENCODERS
+  ENCODERS --> CROSS --> HEADS
+  HEADS --> SPLIT --> SELECT --> CONTROLS --> REPORT

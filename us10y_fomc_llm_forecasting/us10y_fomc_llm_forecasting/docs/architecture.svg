@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1160" viewBox="0 0 1600 1160" role="img" aria-labelledby="title desc">
+  <title id="title">US10Y–FOMC Fusion v7.1 software and machine-learning architecture</title>
+  <desc id="desc">A layered architecture showing authoritative sources, governed data, the preserved v7 neural model, and the v7.1 walk-forward checkpoint lifecycle.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#10233f" flood-opacity="0.13"/>
+    </filter>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#42526b"/>
+    </marker>
+    <marker id="arrowAccent" markerWidth="11" markerHeight="11" refX="9" refY="5.5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L11,5.5 L0,11 z" fill="#0b7a75"/>
+    </marker>
+    <style>
+      .bg { fill: #f7f9fc; }
+      .title { font: 700 30px Inter, Arial, sans-serif; fill: #10233f; }
+      .subtitle { font: 400 15px Inter, Arial, sans-serif; fill: #52627a; }
+      .layer { fill: #ffffff; stroke: #d8e0ec; stroke-width: 1.5; rx: 18; }
+      .layer-title { font: 700 17px Inter, Arial, sans-serif; fill: #213653; letter-spacing: .3px; }
+      .layer-note { font: 400 13px Inter, Arial, sans-serif; fill: #66758c; }
+      .node { stroke-width: 1.5; rx: 12; filter: url(#shadow); }
+      .source { fill: #eef4ff; stroke: #7294cf; }
+      .data { fill: #edf9f6; stroke: #55a89a; }
+      .model { fill: #f4effc; stroke: #9575c5; }
+      .train { fill: #fff6e8; stroke: #d99b42; }
+      .output { fill: #eef8ee; stroke: #67a96d; }
+      .checkpoint { fill: #fff0e9; stroke: #d96a3a; stroke-width: 2.4; }
+      .node-title { font: 700 16px Inter, Arial, sans-serif; fill: #172b49; }
+      .node-text { font: 400 13.5px Inter, Arial, sans-serif; fill: #40516a; }
+      .tag { font: 700 11px Inter, Arial, sans-serif; letter-spacing: .7px; }
+      .source-tag { fill: #315f9d; }
+      .data-tag { fill: #197268; }
+      .model-tag { fill: #694799; }
+      .train-tag { fill: #975d11; }
+      .output-tag { fill: #3c7742; }
+      .edge { fill: none; stroke: #42526b; stroke-width: 2; marker-end: url(#arrow); }
+      .edge-accent { fill: none; stroke: #0b7a75; stroke-width: 2.5; marker-end: url(#arrowAccent); }
+      .edge-dash { fill: none; stroke: #7b8799; stroke-width: 1.8; stroke-dasharray: 7 6; marker-end: url(#arrow); }
+      .edge-label { font: 600 12px Inter, Arial, sans-serif; fill: #52627a; paint-order: stroke; stroke: #f7f9fc; stroke-width: 5px; }
+      .legend { font: 500 12px Inter, Arial, sans-serif; fill: #52627a; }
+      .foot { font: 500 13px Inter, Arial, sans-serif; fill: #40516a; }
+      .foot-strong { font-weight: 700; fill: #b94d21; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="1160"/>
+  <text class="title" x="56" y="48">US10Y–FOMC Fusion v7.1</text>
+  <text class="subtitle" x="56" y="75">Leakage-audited, real-data research pipeline • layered software and ML architecture</text>
+  <g transform="translate(1045 44)">
+    <rect x="0" y="0" width="14" height="14" rx="3" class="source"/><text x="22" y="12" class="legend">source</text>
+    <rect x="94" y="0" width="14" height="14" rx="3" class="data"/><text x="116" y="12" class="legend">data / guard</text>
+    <rect x="216" y="0" width="14" height="14" rx="3" class="model"/><text x="238" y="12" class="legend">model</text>
+    <rect x="306" y="0" width="14" height="14" rx="3" class="train"/><text x="328" y="12" class="legend">training</text>
+    <rect x="406" y="0" width="14" height="14" rx="3" class="output"/><text x="428" y="12" class="legend">evidence</text>
+  </g>
+
+  <rect class="layer" x="40" y="98" width="1520" height="160"/>
+  <text class="layer-title" x="64" y="128">1 · AUTHORITATIVE SOURCES</text>
+  <text class="layer-note" x="64" y="149">External systems are isolated behind resumable clients, local caches and explicit runtime gates.</text>
+  <g transform="translate(80 166)">
+    <rect class="node source" width="410" height="66"/>
+    <text class="tag source-tag" x="20" y="21">FRED API</text>
+    <text class="node-title" x="20" y="43">Treasury yields + policy-rate facts</text>
+    <text class="node-text" x="20" y="60">7 maturities, authoritative decision anchors</text>
+  </g>
+  <g transform="translate(595 166)">
+    <rect class="node source" width="410" height="66"/>
+    <text class="tag source-tag" x="20" y="21">FEDERAL RESERVE</text>
+    <text class="node-title" x="20" y="43">Official minutes + meeting calendar</text>
+    <text class="node-text" x="20" y="60">Canonical URLs, release dates, document bytes</text>
+  </g>
+  <g transform="translate(1110 166)">
+    <rect class="node source" width="410" height="66"/>
+    <text class="tag source-tag" x="20" y="21">OPENAI • CONTROLLED PAID STAGE</text>
+    <text class="node-title" x="20" y="43">gpt-5.6-luna grounded extraction</text>
+    <text class="node-text" x="20" y="60">Schema constrained; cost-ledger and cache guarded</text>
+  </g>
+
+  <path class="edge" d="M285 232 V292"/><path class="edge" d="M800 232 V292"/><path class="edge" d="M1315 232 V292"/>
+
+  <rect class="layer" x="40" y="278" width="1520" height="218"/>
+  <text class="layer-title" x="64" y="308">2 · GOVERNED DATA AND FEATURE LAYER</text>
+  <text class="layer-note" x="64" y="329">Every downstream tensor is built from versioned local artifacts with provenance, masks and temporal contracts.</text>
+  <g transform="translate(70 350)">
+    <rect class="node data" width="340" height="116"/>
+    <text class="tag data-tag" x="20" y="23">MARKET PANEL</text>
+    <text class="node-title" x="20" y="48">Causal price cube</text>
+    <text class="node-text" x="20" y="72">60 days × 7 maturities × 4 channels</text>
+    <text class="node-text" x="20" y="94">Training-only scalers; 5-day target</text>
+  </g>
+  <g transform="translate(443 350)">
+    <rect class="node data" width="340" height="116"/>
+    <text class="tag data-tag" x="20" y="23">DOCUMENT CONTROL</text>
+    <text class="node-title" x="20" y="48">Discovery and integrity audit</text>
+    <text class="node-text" x="20" y="72">Hashes, duplicates, dates, year coverage</text>
+    <text class="node-text" x="20" y="94">Portable path rebasing by verified filename</text>
+  </g>
+  <g transform="translate(816 350)">
+    <rect class="node data" width="340" height="116"/>
+    <text class="tag data-tag" x="20" y="23">GROUNDED EVENT TABLE</text>
+    <text class="node-title" x="20" y="48">14 semantic features</text>
+    <text class="node-text" x="20" y="72">Score + confidence + sentence evidence</text>
+    <text class="node-text" x="20" y="94">Availability mask; signatures; quarantine</text>
+  </g>
+  <g transform="translate(1189 350)">
+    <rect class="node data" width="340" height="116"/>
+    <text class="tag data-tag" x="20" y="23">HARD CONTRACTS</text>
+    <text class="node-title" x="20" y="48">Leakage and tensor guards</text>
+    <text class="node-text" x="20" y="72">Information cutoff, alignment, dimensions</text>
+    <text class="node-text" x="20" y="94">Padding, attention and frozen-weight checks</text>
+  </g>
+  <path class="edge-accent" d="M410 408 H443"/><path class="edge-accent" d="M783 408 H816"/><path class="edge-accent" d="M1156 408 H1189"/>
+
+  <path class="edge" d="M1359 466 V540 H275 V575"/>
+  <path class="edge" d="M1359 466 V520 H685 V575"/>
+  <path class="edge-dash" d="M986 466 V670 H685"/>
+  <text class="edge-label" x="852" y="660">aligned event tokens</text>
+
+  <rect class="layer" x="40" y="516" width="1520" height="326"/>
+  <text class="layer-title" x="64" y="546">3 · PRESERVED v7 NEURAL ARCHITECTURE</text>
+  <text class="layer-note" x="64" y="567">Model and feature-source hashes are identical to executed v7; v7.1 changes training orchestration, checkpointing and observability.</text>
+  <g transform="translate(70 590)">
+    <rect class="node model" width="360" height="114"/>
+    <text class="tag model-tag" x="20" y="23">TRANSFER BOUNDARY</text>
+    <text class="node-title" x="20" y="49">Historical price backbone</text>
+    <text class="node-text" x="20" y="73">Labels end before first FOMC meeting</text>
+    <text class="node-text" x="20" y="95">Purpose + cutoff checked when loaded</text>
+  </g>
+  <g transform="translate(500 590)">
+    <rect class="node model" width="370" height="114"/>
+    <text class="tag model-tag" x="20" y="23">PRICE BRANCH</text>
+    <text class="node-title" x="20" y="49">2D CNN → price Transformer</text>
+    <text class="node-text" x="20" y="73">3×3 and 7×3 CNN paths; residual refine</text>
+    <text class="node-text" x="20" y="95">d=128 daily tokens; 3 layers; 4 heads</text>
+  </g>
+  <g transform="translate(500 724)">
+    <rect class="node model" width="370" height="88"/>
+    <text class="tag model-tag" x="20" y="23">EVENT BRANCH</text>
+    <text class="node-title" x="20" y="49">Rate + semantic token encoders</text>
+    <text class="node-text" x="20" y="72">Authoritative rate token; masked 14-feature sequence</text>
+  </g>
+  <g transform="translate(940 590)">
+    <rect class="node model" width="300" height="150"/>
+    <text class="tag model-tag" x="20" y="23">FUSION CORE</text>
+    <text class="node-title" x="20" y="49">Bidirectional cross-attention</text>
+    <text class="node-text" x="20" y="74">Event → price, 4 heads</text>
+    <text class="node-text" x="20" y="97">Price → event, 4 heads</text>
+    <text class="node-text" x="20" y="120">Residual fusion MLP</text>
+  </g>
+  <g transform="translate(1310 590)">
+    <rect class="node model" width="220" height="150"/>
+    <text class="tag model-tag" x="20" y="23">MULTI-TASK HEADS</text>
+    <text class="node-title" x="20" y="49">Forecast outputs</text>
+    <text class="node-text" x="20" y="74">Down / flat / up</text>
+    <text class="node-text" x="20" y="97">Ordered q05 / q50 / q95</text>
+    <text class="node-text" x="20" y="120">Attention matrices</text>
+  </g>
+  <path class="edge" d="M430 647 H500"/><path class="edge" d="M870 647 H940"/><path class="edge" d="M870 768 H905 V705 H940"/><path class="edge" d="M1240 665 H1310"/>
+  <text class="edge-label" x="443" y="635">frozen encoder</text>
+  <text class="edge-label" x="885" y="636">price tokens</text>
+  <text class="edge-label" x="890" y="756">event tokens</text>
+
+  <path class="edge" d="M1420 740 V880 H250 V916"/>
+  <rect class="layer" x="40" y="862" width="1520" height="236"/>
+  <text class="layer-title" x="64" y="892">4 · WALK-FORWARD EXPERIMENT AND EVIDENCE</text>
+  <text class="layer-note" x="64" y="913">One fold contract, four paired controls, validation-only model selection, then calibration and sealed test evaluation.</text>
+  <g transform="translate(70 936)">
+    <rect class="node train" width="330" height="126"/>
+    <text class="tag train-tag" x="20" y="23">8 PURGED FOLDS</text>
+    <text class="node-title" x="20" y="49">Train → validation → calibration → test</text>
+    <text class="node-text" x="20" y="74">Identical meetings for every paired model</text>
+    <text class="node-text" x="20" y="97">178 unique out-of-sample targets</text>
+  </g>
+  <g transform="translate(440 936)">
+    <rect class="node checkpoint" width="350" height="126"/>
+    <text class="tag" x="20" y="23" fill="#b94d21">v7.1 CHECKPOINT PROTOCOL</text>
+    <text class="node-title" x="20" y="49">Select minimum validation joint loss</text>
+    <text class="node-text" x="20" y="74">Same metric drives patience (35; Δ=1e−5)</text>
+    <text class="node-text" x="20" y="97">Restore + re-evaluate best weights; tqdm live</text>
+  </g>
+  <g transform="translate(830 936)">
+    <rect class="node train" width="330" height="126"/>
+    <text class="tag train-tag" x="20" y="23">PAIRED CONTROLS</text>
+    <text class="node-title" x="20" y="49">Four event models per fold</text>
+    <text class="node-text" x="20" y="74">Price-only • rate-only • shuffled-text</text>
+    <text class="node-text" x="20" y="97">Full fusion with aligned minutes</text>
+  </g>
+  <g transform="translate(1200 936)">
+    <rect class="node output" width="330" height="126"/>
+    <text class="tag output-tag" x="20" y="23">REPRODUCIBLE EVIDENCE</text>
+    <text class="node-title" x="20" y="49">Conformal + evaluation + reports</text>
+    <text class="node-text" x="20" y="74">Intervals, metrics, paired tests, attention</text>
+    <text class="node-text" x="20" y="97">Checkpoints, JSONL logs, CSV, PNG, SVG</text>
+  </g>
+  <path class="edge-accent" d="M400 999 H440"/><path class="edge-accent" d="M790 999 H830"/><path class="edge-accent" d="M1160 999 H1200"/>
+
+  <text class="foot" x="56" y="1132"><tspan class="foot-strong">v7.1 scope:</tspan> checkpoint correctness, early stopping consistency, portable official-document paths, HTTP content negotiation and terminal/Jupyter progress visibility.</text>
+</svg>

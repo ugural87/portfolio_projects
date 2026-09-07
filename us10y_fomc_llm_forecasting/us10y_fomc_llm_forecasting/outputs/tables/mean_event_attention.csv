@@ -1,0 +1,16 @@
+event_token,attention
+rate_decision,0.08375256336974289
+committee_dispersion,0.07073625706638509
+forward_guidance_strength,0.06805237167085819
+balance_sheet_policy_shift,0.06802869642583219
+unemployment_assessment_shift,0.06789540271327062
+expected_rate_path_shift,0.06750213536904764
+growth_activity_shift,0.06740450379804945
+policy_stance_shift,0.06651261515831675
+labor_market_risk_shift,0.06649375901547036
+policy_uncertainty,0.06635189698904415
+financial_conditions_shift,0.06611313455309087
+inflation_risk_shift,0.06554931100834617
+inflation_assessment_shift,0.06554268999548436
+current_policy_stance,0.06481954415611332
+risk_balance_shift,0.06358993501308255
