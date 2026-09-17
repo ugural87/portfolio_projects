@@ -1,5 +1,3 @@
-[README.md](https://github.com/user-attachments/files/30325989/README.md)
-
 # Data Science Portfolio
 
 A collection of end-to-end data science projects built around one idea: **models are not
@@ -19,7 +17,8 @@ Every project in this portfolio follows the same standards, applied in the form 
 project type demands:
 
 - **Reproducible by one command** — data is downloaded automatically on first run
-  (Kaggle via `kagglehub`, with mirrored fallbacks); no manual file placement.
+  from the documented source (`kagglehub` where relevant and OpenML for fraud); no
+  manual file placement.
 - **Leakage-free by construction** — no information crosses from evaluation data into
   training. In supervised ML this means preprocessing and resampling live *inside*
   cross-validated pipelines; in time series it means walk-forward splits and strict
@@ -49,9 +48,9 @@ project type demands:
 | 1 | [Bank Customer Churn](./bank-churn/)              | Retail banking / retention               | ✅ Complete |
 | 2 | [Credit Risk Modelling](./credit-risk/)           | Retail credit / PD estimation            | ✅ Complete |
 | 3 | [Customer Segmentation](./customer-segmentation/) | Marketing analytics / unsupervised       | ✅ Complete |
-| 4 | Fraud Detection                                  | Payments / anomaly detection             | Planned     |
+| 4 | [Fraud Detection](./fraud-detection/)            | Payments / rare-event decisioning        | ✅ Complete |
 | 5 | Classical Time Series Analysis                   | Sensor & financial data / statistical TS | Planned     |
-| 6 | Deep Learning Time Series Forecasting            | Markets / sequence modelling             | Planned     |
+| 6 | [US10Y + FOMC LLM Forecasting](./us10y_fomc_llm_forecasting/) | Markets / multimodal forecasting | ✅ Complete |
 | 7 | NLP & LLM Track                                  | Text / retrieval / generation            | Planned     |
 
 ---
@@ -98,13 +97,36 @@ Three independent methods converge on the verdict that the RFM space is a contin
 rather than a set of islands — so the segments are presented as useful partitions, and
 the density method's contribution is reframed as a principled key-account list.
 
-### 4. Fraud Detection
+### 4. Fraud Detection ✅
 
-Extreme class imbalance as the central technical challenge: precision-recall-first
-evaluation, cost-sensitive thresholds where false positives and false negatives carry
-asymmetric and very different costs, anomaly-detection baselines vs supervised
-approaches, and the operational questions (alert budgets, queue prioritization) that
-make fraud a decision problem rather than a leaderboard metric.
+An executed credit-card fraud decision system built around the operational problem, not
+just the classifier. The canonical ULB/OpenML data contain 283,726 transactions after
+exact-row deduplication, with only 473 frauds (0.1667%), making class imbalance the
+central design constraint.
+
+| Notebook | Content |
+| --- | --- |
+| `01_eda` | Schema and duplicate audit, temporal structure, amount analysis and class-imbalance diagnostics |
+| `02_classical_and_imbalanced_models` | Logistic regression, leakage-safe SMOTE, class weighting, XGBoost, LightGBM, Balanced Random Forest and EasyEnsemble under expanding temporal CV |
+| `03_deep_learning` | PyTorch MLP challengers trained with weighted BCE and focal loss |
+| `04_calibration_and_governance` | Held-out probability calibration, reliability analysis and model-governance checks |
+| `05_decision_analysis` | Capacity-constrained hourly alert queues, transaction-level expected loss and policy sensitivity |
+| `06_causal_policy` | Semi-synthetic propensity, matching, g-computation, IPTW and cross-fitted AIPW estimator audit |
+| `07_business_dashboard` | Executive view of fraud capture, review workload, prevented loss, net savings and uncertainty |
+
+The focal-loss MLP won the chronological model comparison with a final holdout PR-AUC
+of **0.7925**. The policy was selected before the test block and then frozen. On the
+42,557-transaction final holdout it generated 35 alerts; all 35 happened to be fraud,
+giving **100% observed precision** and **67.31% fraud-count recall**, while capturing
+56.22% of fraud amount. This is a finite-sample result, not a claim that production
+alerts would have no false positives.
+
+Under the documented scenario assumptions, the policy produced estimated net savings
+of **3,054.38 currency units** in the test block, with a bootstrap 95% interval of
+1,263.01–5,471.84. The public data contain no bank identity, currency definition or real
+review-treatment outcome, so these are scenario estimates rather than realized bank
+savings; the causal section is an estimator validation template rather than a causal
+claim about the dataset.
 
 ### 5. Classical Time Series Analysis
 
@@ -127,19 +149,20 @@ structure). Content:
   as pragmatic baselines, with a sober comparison of where they win (multiple
   seasonalities, holidays, missing data) and where they don't.
 
-### 6. Deep Learning Time Series Forecasting
+### 6. US10Y + FOMC LLM Forecasting ✅
 
-Hybrid deep architectures for financial series: **2D convolutional feature extraction
-over multi-channel input windows feeding a Transformer encoder** — CNN layers learn
-local temporal/cross-channel patterns, attention layers learn long-range structure —
-with **LSTM** models built alongside as the recurrent reference point, so the
-convolution+attention hybrid is judged against the architecture it claims to improve on.
-The target is **direction classification rather than point estimation**: point forecasts
-of financial series systematically overstate what the data supports, so the honest
-formulation is directional probability, evaluated with proper scoring rules and
-calibration rather than RMSE theater. Full temporal hygiene throughout: walk-forward
-validation, strict no-lookahead feature construction, and the classical baselines of
-project 5 (SARIMA/GARCH/Prophet) that any deep model must demonstrably beat.
+A multimodal deep-learning system for five-business-day US 10-year Treasury yield
+movements. A multiscale **2D-CNN + Transformer encoder** learns market dynamics, while
+an LLM converts consecutive FOMC minutes into sentence-grounded policy features covering
+inflation, labour, growth, balance-sheet policy, financial stability, disagreement and
+hawkish/dovish change. **Bidirectional cross-attention** fuses the market and policy
+streams before direction and distribution heads.
+
+The evaluation uses walk-forward splits, strict release-date alignment and ablations for
+price-only, rate facts, tone, full LLM features and shuffled text. The shuffled-text
+control tests whether semantic structure adds information beyond simply adding another
+feature channel. The project therefore treats multimodal forecasting as an empirical
+question, not an architectural assumption.
 
 ### 7. NLP & LLM Track
 
@@ -214,7 +237,24 @@ portfolio_projects/
 │   ├── LICENSE
 │   └── README.md
 │
-└── ...                                # each subsequent project follows the same layout
+├── fraud-detection/                    # rare-event prediction + constrained decisions
+│   ├── notebooks/                     # EDA → models → calibration → policy → causal audit
+│   ├── src/fraud_detection/           # reusable data, modelling and decision modules
+│   ├── artifacts/                     # executed metrics and policy outputs
+│   ├── reports/figures/               # ten publication-quality figures
+│   ├── tests/
+│   ├── requirements.txt
+│   └── README.md
+│
+├── us10y_fomc_llm_forecasting/        # market sequence + FOMC semantic fusion
+│   ├── configs/
+│   ├── data/
+│   ├── docs/
+│   ├── notebooks/
+│   ├── src/
+│   └── README.md
+│
+└── ...                                # planned projects follow the same conventions
 ```
 
 Every project folder is self-contained: its own pinned `requirements.txt`, its own MIT
