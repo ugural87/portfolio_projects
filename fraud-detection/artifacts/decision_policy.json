@@ -1,0 +1,12 @@
+{
+  "selected_policy": "f1_threshold",
+  "f1_threshold": 0.5804161113733078,
+  "hourly_capacity": 21,
+  "ranking_window": "one elapsed-hour bucket",
+  "review_cost": 4.0,
+  "legitimate_friction_cost": 8.0,
+  "chargeback_fee": 15.0,
+  "capture_rate": 0.8,
+  "daily_alert_capacity": 500,
+  "currency_label": "CU"
+}

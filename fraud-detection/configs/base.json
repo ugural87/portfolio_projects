@@ -1,0 +1,27 @@
+{
+  "split": {
+    "train": 0.55,
+    "validation": 0.10,
+    "calibration": 0.10,
+    "policy": 0.10,
+    "test": 0.15
+  },
+  "cost": {
+    "review_cost": 4.0,
+    "legitimate_friction_cost": 8.0,
+    "chargeback_fee": 15.0,
+    "capture_rate": 0.8,
+    "daily_alert_capacity": 500,
+    "currency_label": "CU"
+  },
+  "run": {
+    "random_state": 42,
+    "fast_mode": true,
+    "drop_exact_duplicates": true,
+    "bootstrap_repetitions": 500,
+    "causal_bootstrap_repetitions": 30,
+    "deep_epochs": 18,
+    "deep_patience": 4
+  }
+}
+

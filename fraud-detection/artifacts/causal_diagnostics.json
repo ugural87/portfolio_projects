@@ -1,0 +1,23 @@
+{
+  "semi_synthetic": true,
+  "treatment_rate": 0.23770472542707427,
+  "true_ate": 11.871104636135065,
+  "true_att": 11.60509588770265,
+  "aipw_ate": 11.543703063231474,
+  "aipw_influence_function_95pct_ci": [
+    11.260510229271494,
+    11.826895897191454
+  ],
+  "aipw_full_refit_bootstrap_95pct_ci": {
+    "low": 9.658289418832755,
+    "median": 11.458018657910657,
+    "high": 11.848430294565283,
+    "repetitions": 30
+  },
+  "iptw_effective_sample_size": 39853.708640950674,
+  "unclipped_propensity_min": 0.06187142666742912,
+  "unclipped_propensity_max": 0.952967243353379,
+  "matching_treated_retained": 10114,
+  "matching_treated_total": 10116,
+  "scope": "Estimator audit with constructed potential outcomes, not an identified effect from the public dataset."
+}

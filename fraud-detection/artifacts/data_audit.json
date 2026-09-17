@@ -1,0 +1,13 @@
+{
+  "raw_rows": 284807,
+  "modeling_rows": 283726,
+  "columns": 31,
+  "frauds_raw": 492,
+  "frauds_modeling": 473,
+  "fraud_rate_modeling": 0.001667101358352777,
+  "exact_duplicates_removed": 1081,
+  "missing_values": 0,
+  "time_min_seconds": 0.0,
+  "time_max_seconds": 172792.0,
+  "source_sha256": "fdaf12730dc1fc426f318b71349f24f5c5fd00aa1152940be7e7509ae3d89d2a"
+}

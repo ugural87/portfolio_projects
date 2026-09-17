@@ -1,0 +1,45 @@
+{
+  "selected_policy": "f1_threshold",
+  "policy_selection_block": "policy",
+  "final_evaluation_block": "test",
+  "f1_threshold": 0.5804161113733078,
+  "cost_assumptions": {
+    "review_cost": 4.0,
+    "legitimate_friction_cost": 8.0,
+    "chargeback_fee": 15.0,
+    "capture_rate": 0.8,
+    "daily_alert_capacity": 500,
+    "currency_label": "CU"
+  },
+  "test_metrics": {
+    "policy": "f1_threshold",
+    "transactions": 42557,
+    "alerts": 35,
+    "alert_rate": 0.000822426392837841,
+    "true_fraud_alerts": 35,
+    "false_positive_alerts": 0,
+    "precision": 1.0,
+    "fraud_count_recall": 0.6730769230769231,
+    "fraud_amount_capture": 0.5621733604803464,
+    "estimated_prevented_fraud_count": 28.0,
+    "gross_prevented_loss": 3194.384,
+    "review_cost_total": 140.0,
+    "friction_cost_total": 0.0,
+    "approve_all_cost": 6948.88,
+    "realized_cost": 3894.495999999999,
+    "net_savings": 3054.384000000001,
+    "savings_per_1000_transactions": 71.77160044176048,
+    "savings_per_alert": 87.26811428571432,
+    "review_roi": 21.81702857142858,
+    "mean_alert_probability": 0.8671209269622503,
+    "selected_on_policy_block": true
+  },
+  "net_savings_95pct_bootstrap_interval": {
+    "low": 1263.0122000000001,
+    "median": 2885.9359999999997,
+    "high": 5471.842999999999,
+    "repetitions": 500
+  },
+  "illustrative_savings_per_million_transactions": 71771.60044176049,
+  "claim_scope": "Scenario estimate on the public ULB dataset; not realized savings from an identified bank."
+}

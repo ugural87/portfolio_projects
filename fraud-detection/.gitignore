@@ -1,0 +1,12 @@
+.DS_Store
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+data/*.csv
+data/*.arff
+artifacts/*.joblib
+artifacts/*.pt
+artifacts/*.npz
+

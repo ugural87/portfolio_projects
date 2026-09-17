@@ -1,0 +1,3 @@
+model,validation_pr_auc,epochs_run
+mlp_focal,0.8010497327960754,13
+mlp_weighted_bce,0.7523974573143617,10
