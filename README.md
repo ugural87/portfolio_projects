@@ -1,267 +1,132 @@
-# Data Science Portfolio
+# Data Science, AI and Production ML Portfolio
 
-A collection of end-to-end data science projects built around one idea: **models are not
-the deliverable — decisions are.** Every project runs the full arc from exploratory
-analysis through rigorously tuned models to the decision layer (cost-aware thresholds,
-business proposals) and, where the data allows, to causal analysis of the levers the
-business actually controls.
+This repository contains applied data science projects, modern AI research and production ML work. The projects are different in subject, but they follow the same research discipline: define the decision or forecasting problem first, establish a defensible validation design, compare against clear baselines, and keep the limits of the data visible.
 
-My background is ~13 years of quantitative modelling — from continuum mechanics and
-constitutive modelling to financial markets — and these projects apply that mindset to
-applied data science: explicit assumptions, leakage-free protocols, calibrated
-probabilities, and honest statements of what the data can and cannot support.
+The repository is organised around three working lines. Quantitative finance projects that need their own research context also appear in the separate [Quantitative_Research](https://github.com/ugural87/Quantitative_Research) repository.
 
-## Design principles
-
-Every project in this portfolio follows the same standards, applied in the form the
-project type demands:
-
-- **Reproducible by one command** — data is downloaded automatically on first run
-  from the documented source (`kagglehub` where relevant and OpenML for fraud); no
-  manual file placement.
-- **Leakage-free by construction** — no information crosses from evaluation data into
-  training. In supervised ML this means preprocessing and resampling live *inside*
-  cross-validated pipelines; in time series it means walk-forward splits and strict
-  no-lookahead feature construction; in NLP it means fitting vectorizers and embeddings
-  on training folds only.
-- **Fair model comparison: the model is the only variable** — compared models share the
-  same split, features and tuning budget. In the classical-ML projects this takes the
-  form of an identical two-stage search per model (broad `RandomizedSearchCV` → refined
-  `GridSearchCV`, as in the churn series); in the deep learning projects, a shared
-  training/validation regime with the classical models standing as baselines that any
-  deep architecture must demonstrably beat.
-- **Probabilities over labels, wherever a probability is the product** — classification
-  outputs are calibrated and audited with reliability diagrams, and forecasts are
-  evaluated with proper scoring rules, because real decisions are priced on
-  probabilities, not argmax labels.
-- **Every project ends at the decision it informs** — cost matrices and profit-optimal
-  thresholds where economics are explicit; alert budgets in fraud; action-per-segment
-  logic in segmentation; sensitivity analysis of the assumptions in all of them.
-- **Association vs causation stated honestly** — predictive importance is never sold as
-  a lever; causal claims get causal machinery (propensity scores, weighting, matching)
-  and plainly stated limitations.
-
-## Projects
-
-| # | Project                                          | Domain                                   | Status      |
-| - | ------------------------------------------------ | ---------------------------------------- | ----------- |
-| 1 | [Bank Customer Churn](./bank-churn/)              | Retail banking / retention               | ✅ Complete |
-| 2 | [Credit Risk Modelling](./credit-risk/)           | Retail credit / PD estimation            | ✅ Complete |
-| 3 | [Customer Segmentation](./customer-segmentation/) | Marketing analytics / unsupervised       | ✅ Complete |
-| 4 | [Fraud Detection](./fraud-detection/)            | Payments / rare-event decisioning        | ✅ Complete |
-| 5 | Classical Time Series Analysis                   | Sensor & financial data / statistical TS | Planned     |
-| 6 | [US10Y + FOMC LLM Forecasting](./us10y_fomc_llm_forecasting/) | Markets / multimodal forecasting | ✅ Complete |
-| 7 | NLP & LLM Track                                  | Text / retrieval / generation            | Planned     |
-
----
-
-### 1. Bank Customer Churn ✅
-
-Churn as a *decision system*, not a classification exercise. Six notebooks, each
-building on the last:
-
-| Notebook                   | Content                                                                                                                                                                                |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `01_eda`                 | Detailed EDA — univariate structure, interactions, and the three structural findings that drive every downstream choice                                                               |
-| `02_logistic_regression` | The linear yardstick: SMOTE inside the CV pipeline, two-stage hyperparameter search, full evaluation suite (ROC/PR, confusion matrices, threshold analysis), odds-ratio interpretation |
-| `03_xgboost`             | Same protocol, XGBoost — SHAP shows the gap over the linear model coming exactly from the non-linearities found in EDA                                                                |
-| `04_lightgbm`            | Same protocol, LightGBM — plus the series-closing three-model comparison                                                                                                              |
-| `05_decision_analysis`   | Calibration, cost-matrix-derived optimal contact threshold, sensitivity analysis over the economic assumptions, campaign sizing, five concrete business proposals                      |
-| `06_causal_propensity`   | From association to causation: propensity-score analysis (IPW, caliper matching, g-computation) of the activation lever, with balance diagnostics and honest limitations               |
-
-### 2. Credit Risk Modelling ✅
-
-Probability-of-default modelling carried all the way to the number a bank actually
-books: a staged, scenario-weighted **IFRS 9 expected credit loss** with every assumption
-stated and stress-tested. Three notebooks:
-
-| Notebook             | Content                                                                                                                                                                                                                                                                                                         |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `01_eda`           | Data-quality audit with documented cleaning rules, informative-missingness analysis, and a statistical association battery: chi-square/Cramér's V, Mann-Whitney, mutual information, WoE/Information Value                                                                                                     |
-| `02_xgboost_model` | Leakage-free pipeline (in-pipeline imputation + missing indicators, SMOTE in CV folds), two-stage hyperparameter search, full evaluation (ROC/PR, Gini, confusion matrices), gain + SHAP importance — closing with a measured comparison of statistical vs model importance and where the two rankings diverge |
-| `03_ifrs9_ecl`     | Isotonic calibration → PD, SICR staging with relative and backstop rules, explicit LGD/EAD/maturity assumptions, probability-weighted scenarios, and a sensitivity disclosure of the provision to its assumption set                                                                                           |
-
-### 3. Customer Segmentation ✅
-
-Unsupervised counterpart to the supervised projects, built around one disciplined
-question: *how much structure does this data actually contain?* Four notebooks:
-
-| Notebook        | Content                                                                                                                                                                                                        |
-| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `01_eda_rfm`  | Transaction-log audit with documented cleaning rules, RFM+ feature construction, skew/log analysis, correlation structure                                                                                      |
-| `02_kmeans`   | k selection with three instruments — elbow, silhouette curve, and per-cluster silhouette "knife" plots — then segment profiling and one action per segment                                                   |
-| `03_dbscan`   | `min_samples` reasoning and k-distance eps selection, an eps grid mapping over-smoothing against fragmentation, knife-plot audit, and noise analysis that turns out to be the project's most valuable output |
-| `04_pca_tsne` | PCA variance, loadings and biplot with named components; t-SNE across a perplexity scan; both clusterings overlaid on both projections                                                                         |
-
-Three independent methods converge on the verdict that the RFM space is a continuum
-rather than a set of islands — so the segments are presented as useful partitions, and
-the density method's contribution is reframed as a principled key-account list.
-
-### 4. Fraud Detection ✅
-
-An executed credit-card fraud decision system built around the operational problem, not
-just the classifier. The canonical ULB/OpenML data contain 283,726 transactions after
-exact-row deduplication, with only 473 frauds (0.1667%), making class imbalance the
-central design constraint.
-
-| Notebook | Content |
-| --- | --- |
-| `01_eda` | Schema and duplicate audit, temporal structure, amount analysis and class-imbalance diagnostics |
-| `02_classical_and_imbalanced_models` | Logistic regression, leakage-safe SMOTE, class weighting, XGBoost, LightGBM, Balanced Random Forest and EasyEnsemble under expanding temporal CV |
-| `03_deep_learning` | PyTorch MLP challengers trained with weighted BCE and focal loss |
-| `04_calibration_and_governance` | Held-out probability calibration, reliability analysis and model-governance checks |
-| `05_decision_analysis` | Capacity-constrained hourly alert queues, transaction-level expected loss and policy sensitivity |
-| `06_causal_policy` | Semi-synthetic propensity, matching, g-computation, IPTW and cross-fitted AIPW estimator audit |
-| `07_business_dashboard` | Executive view of fraud capture, review workload, prevented loss, net savings and uncertainty |
-
-The focal-loss MLP won the chronological model comparison with a final holdout PR-AUC
-of **0.7925**. The policy was selected before the test block and then frozen. On the
-42,557-transaction final holdout it generated 35 alerts; all 35 happened to be fraud,
-giving **100% observed precision** and **67.31% fraud-count recall**, while capturing
-56.22% of fraud amount. This is a finite-sample result, not a claim that production
-alerts would have no false positives.
-
-Under the documented scenario assumptions, the policy produced estimated net savings
-of **3,054.38 currency units** in the test block, with a bootstrap 95% interval of
-1,263.01–5,471.84. The public data contain no bank identity, currency definition or real
-review-treatment outcome, so these are scenario estimates rather than realized bank
-savings; the causal section is an estimator validation template rather than a causal
-claim about the dataset.
-
-### 5. Classical Time Series Analysis
-
-The statistical foundation the deep models must justify themselves against, built on two
-deliberately different datasets: **sensor data** (strong seasonality, clean physical
-structure) and **financial return series** (weak mean signal, strong volatility
-structure). Content:
-
-- **Structure and diagnostics** — decomposition into trend / seasonality / remainder
-  (classical and STL), autocorrelation analysis (ACF/PACF) for identifying
-  autoregressive and moving-average terms, stationarity testing (ADF, KPSS) and
-  differencing decisions.
-- **The ARIMA family** — ARMA → SARIMA for seasonal structure → SARIMAX with exogenous
-  regressors; order selection via information criteria against ACF/PACF reasoning,
-  residual diagnostics (Ljung-Box) as the acceptance test.
-- **Volatility modelling** — ARCH/GARCH on financial returns: volatility clustering,
-  conditional heteroskedasticity, and why modelling the second moment is often the only
-  honest thing to do with return series.
-- **Prophet and smoothing benchmarks** — Prophet and Holt-Winters exponential smoothing
-  as pragmatic baselines, with a sober comparison of where they win (multiple
-  seasonalities, holidays, missing data) and where they don't.
-
-### 6. US10Y + FOMC LLM Forecasting ✅
-
-A multimodal deep-learning system for five-business-day US 10-year Treasury yield
-movements. A multiscale **2D-CNN + Transformer encoder** learns market dynamics, while
-an LLM converts consecutive FOMC minutes into sentence-grounded policy features covering
-inflation, labour, growth, balance-sheet policy, financial stability, disagreement and
-hawkish/dovish change. **Bidirectional cross-attention** fuses the market and policy
-streams before direction and distribution heads.
-
-The evaluation uses walk-forward splits, strict release-date alignment and ablations for
-price-only, rate facts, tone, full LLM features and shuffled text. The shuffled-text
-control tests whether semantic structure adds information beyond simply adding another
-feature channel. The project therefore treats multimodal forecasting as an empirical
-question, not an architectural assumption.
-
-### 7. NLP & LLM Track
-
-Three connected builds moving up the abstraction ladder:
-
-- **Recommendation system** — content-based recommendation over text: embedding
-  construction, similarity retrieval, and evaluation beyond accuracy (coverage,
-  diversity, cold-start behavior).
-- **Sentiment classification with LLMs** — classical baselines (TF-IDF / embedding
-  pipelines into gradient boosting) and a **BiLSTM + attention** architecture — used in
-  earlier work and carried in here as the pre-transformer deep baseline — against
-  fine-tuned transformer and LLM-based classifiers, with error analysis on where each
-  paradigm wins and at what cost.
-- **RAG system** — retrieval-augmented generation end to end: chunking and embedding
-  strategy, vector retrieval, generation with grounding, and evaluation of both
-  retrieval quality and answer faithfulness.
-
----
-
-## Tech stack
-
-- **Core:** Python · pandas · NumPy · SciPy
-- **Machine learning:** scikit-learn · imbalanced-learn · XGBoost · LightGBM · SHAP
-- **Deep learning:** PyTorch (CNNs, LSTMs, Transformer encoders, custom architectures)
-- **NLP / LLM:** Hugging Face Transformers · sentence-transformers · gensim
-- **Time series:** statsmodels (ARIMA/SARIMAX, decomposition, diagnostics) · pmdarima
-  (auto-ARIMA order search) · arch (ARCH/GARCH) · Prophet
-- **Visualization:** matplotlib · seaborn · Plotly
-- **Apps & dashboards:** Streamlit
-- **Tooling:** Jupyter · Git
-
-Each project folder carries its own `requirements.txt` and README with full results and
-reproduction instructions.
-
-## Structure convention
-
+```mermaid
+flowchart TD
+    R["portfolio_projects"] --> A["Applied data science"]
+    R --> B["NLP and modern AI"]
+    R --> C["MLOps and production ML"]
+    A --> D["Banking decisions"]
+    B --> E["Language and multimodal systems"]
+    C --> F["Reliable model delivery"]
 ```
+
+## Project map
+
+| Project | Problem | Main methods | Status |
+| --- | --- | --- | --- |
+| [Bank Customer Churn](./bank-churn/) | Retention targeting under explicit campaign economics | Logistic regression, XGBoost, LightGBM, calibration, cost-sensitive policy and propensity analysis | Complete |
+| [Credit Risk and IFRS 9](./credit-risk/) | PD estimation carried into staged, scenario-weighted expected credit loss | XGBoost, SHAP, calibration, SICR, LGD, EAD and ECL sensitivity | Complete |
+| [Customer Segmentation](./customer-segmentation/) | Whether transaction behaviour contains defensible customer groups | RFM+, K-Means, DBSCAN, PCA, t-SNE and action mapping | Complete |
+| [Credit Card Fraud Decision System](./fraud-detection/) | Rare-event detection under review-capacity and cost constraints | Temporal CV, imbalance methods, focal-loss MLP, calibration and frozen policy evaluation | Complete |
+| [US10Y and FOMC Forecasting](./us10y_fomc_llm_forecasting/) | Whether information in FOMC minutes adds signal beyond prices and rate facts | 2D-CNN, Transformer, LLM semantic extraction, cross-attention, walk-forward and ablations | Complete |
+| [NYC Taxi Production ML](./MLOps/NYC_Taxi_Duration_Production_ML/) | Taking a regression model into a tested inference and release system | FastAPI, Docker, CI/CD, monitoring, Kubernetes, release gates and artifact lineage | Complete |
+
+## How the work fits together
+
+```mermaid
+flowchart LR
+    A["Problem and decision"] --> B["Data contract"]
+    B --> C["Baseline"]
+    C --> D["Model comparison"]
+    D --> E["Calibration or uncertainty"]
+    E --> F["Decision policy"]
+    F --> G["Deployment and monitoring"]
+```
+
+Not every project needs every box. A segmentation study does not require probability calibration, and a research pipeline is not automatically a deployable service. The point is to use the parts that the problem requires and to say explicitly which parts are absent.
+
+## Applied data science
+
+### Bank customer churn
+
+The churn series treats retention as a resource-allocation problem. Three model families are compared under a common search design, then probability calibration and a cost matrix turn predicted churn risk into a contact policy. A separate propensity analysis asks whether customer activation can be treated as an intervention rather than merely a predictive feature.
+
+### Credit risk and IFRS 9
+
+The credit-risk project starts with probability of default and continues to the quantity used in provisioning. Calibrated PD estimates feed SICR rules, staging, LGD and EAD assumptions, macroeconomic scenarios and expected credit loss. Sensitivity analysis keeps the impact of those assumptions visible.
+
+### Customer segmentation
+
+K-Means, DBSCAN, PCA and t-SNE are used to test how much cluster structure the RFM feature space actually supports. The result is deliberately modest: the customer space behaves more like a continuum than separated islands, so the clusters are useful operating partitions rather than natural customer species.
+
+### Credit card fraud
+
+The fraud project uses chronological partitions for training, model selection, calibration, policy selection and final testing. Classical imbalance strategies are compared with PyTorch MLP challengers. The selected focal-loss model is converted into an hourly review queue under explicit capacity and loss assumptions. The repository includes tests, saved artifacts, a business dashboard, a model card and a data card.
+
+```mermaid
+flowchart LR
+    A["Transactions"] --> B["Temporal model comparison"]
+    B --> C["Held-out calibration"]
+    C --> D["Policy selection block"]
+    D --> E["Frozen hourly review policy"]
+    E --> F["Final test and uncertainty"]
+```
+
+## NLP and modern AI
+
+The first completed system in this line is the US10Y and FOMC project. It does not use an LLM as an unexamined oracle. The LLM produces a versioned, sentence-grounded set of 14 semantic features from consecutive FOMC minutes. These features are fused with market representations and tested against price-only, rate-only and shuffled-text controls.
+
+```mermaid
+flowchart LR
+    A["Market history"] --> B["2D-CNN and Transformer"]
+    C["FOMC minutes"] --> D["14 grounded LLM features"]
+    B --> E["Bidirectional cross-attention"]
+    D --> E
+    E --> F["Direction and quantile heads"]
+```
+
+The current build plan adds two distinct lines rather than a collection of chatbots:
+
+1. A sentiment-classification system built from crawled web data, text cleaning, Word2Vec embeddings and RNN or LSTM models, with TF-IDF and simpler classifiers as baselines.
+2. Evaluated LLM systems covering document ingestion, chunking, embeddings, retrieval, reranking, grounded generation, faithfulness tests and later tool-using agentic workflows.
+
+These are roadmap items, not implemented folders yet. The relevant directories will be created when the first working project is added.
+
+## MLOps and production ML
+
+The [MLOps area](./MLOps/) begins with NYC Taxi trip-duration prediction, but the regression task is only the test case. The main work is the controlled path from data and training through versioned artifacts, a FastAPI service, container hardening, automated tests, CI/CD, release comparison, monitoring and deployment manifests.
+
+```mermaid
+flowchart LR
+    A["Training data"] --> B["Validated pipeline"]
+    B --> C["Versioned artifact"]
+    C --> D["FastAPI service"]
+    D --> E["Container and Kubernetes"]
+    E --> F["Metrics and monitoring"]
+```
+
+## Validation principles
+
+The implementation changes by problem, but several rules are stable:
+
+- Split design follows how information becomes available in the real problem.
+- Preprocessing, resampling and model selection stay inside the training boundary.
+- Complex models must earn their place against a simpler baseline.
+- Probabilities are calibrated when the downstream decision depends on their numerical meaning.
+- Ablations and shuffled controls are used when an architecture contains multiple information sources.
+- Predictive association is not described as causal evidence.
+- Business impact remains conditional on explicit assumptions when public data do not contain real intervention outcomes or accounting values.
+- Production claims require tests, artifact contracts, release controls and operational visibility.
+
+## Repository structure
+
+```text
 portfolio_projects/
-├── README.md                          # this page — the portfolio map
-│
-├── bank-churn/                        # churn as a decision system
-│   ├── notebooks/
-│   │   ├── 01_eda_analysis.ipynb      # EDA: three structural findings
-│   │   ├── 02_logistic_regression.ipynb   # linear baseline, SMOTE, two-stage search
-│   │   ├── 03_xgboost.ipynb           # same protocol, XGBoost, SHAP
-│   │   ├── 04_lightgbm.ipynb          # same protocol + three-model comparison
-│   │   ├── 05_decision_analysis.ipynb # calibration, profit threshold, proposals
-│   │   └── 06_causal_propensity.ipynb # IPW / matching / g-computation
-│   ├── data/                          # auto-downloaded, git-ignored (.gitkeep only)
-│   ├── requirements.txt               # project-specific pinned minimums
-│   ├── LICENSE                        # MIT
-│   └── README.md                      # results, findings, roadmap
-│
-├── credit-risk/                       # PD model + IFRS 9 ECL layer
-│   ├── notebooks/
-│   │   ├── 01_eda_analysis.ipynb      # data-quality audit, chi2/Cramér's V/MI/IV battery
-│   │   ├── 02_xgboost_model.ipynb     # tuned XGBoost, SHAP, statistical-vs-model importance
-│   │   └── 03_ifrs9_ecl.ipynb         # calibrated PD, staging, LGD/EAD, scenario ECL
-│   ├── data/
-│   ├── requirements.txt
-│   ├── LICENSE
-│   └── README.md
-│
-├── customer-segmentation/             # unsupervised: how much structure is really there?
-│   ├── notebooks/
-│   │   ├── 01_eda_rfm.ipynb           # transaction-log audit, RFM+ construction
-│   │   ├── 02_kmeans.ipynb            # elbow, silhouette curve, knife plots, actions
-│   │   ├── 03_dbscan.ipynb            # k-distance eps selection, noise analysis
-│   │   └── 04_pca_tsne.ipynb          # PCA loadings/biplot, t-SNE perplexity scan
-│   ├── data/
-│   ├── requirements.txt
-│   ├── LICENSE
-│   └── README.md
-│
-├── fraud-detection/                    # rare-event prediction + constrained decisions
-│   ├── notebooks/                     # EDA → models → calibration → policy → causal audit
-│   ├── src/fraud_detection/           # reusable data, modelling and decision modules
-│   ├── artifacts/                     # executed metrics and policy outputs
-│   ├── reports/figures/               # ten publication-quality figures
-│   ├── tests/
-│   ├── requirements.txt
-│   └── README.md
-│
-├── us10y_fomc_llm_forecasting/        # market sequence + FOMC semantic fusion
-│   ├── configs/
-│   ├── data/
-│   ├── docs/
-│   ├── notebooks/
-│   ├── src/
-│   └── README.md
-│
-└── ...                                # planned projects follow the same conventions
+├── bank-churn/
+├── credit-risk/
+├── customer-segmentation/
+├── fraud-detection/
+├── us10y_fomc_llm_forecasting/
+│   └── us10y_fomc_llm_forecasting/
+├── MLOps/
+│   ├── README.md
+│   └── NYC_Taxi_Duration_Production_ML/
+└── README.md
 ```
 
-Every project folder is self-contained: its own pinned `requirements.txt`, its own MIT
-`LICENSE`, its own README carrying the results, and a git-ignored `data/` directory that
-the first notebook populates automatically. Notebooks are numbered in reading order and
-committed **with their outputs**, so the analysis is readable on GitHub without running
-anything.
+Each project README contains its own data contract, methods, results, limitations and reproduction instructions. This page is the map across projects.
 
-Results, figures and detailed findings live in each project's own README — this page is
-the map, not the territory.

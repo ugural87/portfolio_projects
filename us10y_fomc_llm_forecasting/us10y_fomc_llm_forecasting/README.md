@@ -1,4 +1,4 @@
-# US10Y–FOMC Cross-Attention Research Pipeline
+# US10Y-FOMC Cross-Attention Research Pipeline
 
 This package forecasts the five-business-day change in the US 10-year Treasury yield around
 scheduled FOMC meetings. It combines:
@@ -34,7 +34,7 @@ src/us10y_fomc/
   data/                     FRED, Federal Reserve discovery/download and audits
   llm/                      14-feature schema, sentence IDs, grounding, cache, cost ledger
   features/                 Causal price cube, event alignment, training-only scalers
-  models/                   CNN–Transformer, token encoders and cross-attention
+  models/                   CNN-Transformer, token encoders and cross-attention
   training/                 Backbones, ablations, conformal and walk-forward
   validation/               Leakage, masks, dimensions and frozen-weight gates
   evaluation/               Forecast metrics, paired tests and attention exports
@@ -73,7 +73,7 @@ order described in the runbook.
 | `fusion` | direction + q05/q50/q95 | yes | yes | yes |
 
 All four models are fitted and evaluated on the same fold meetings. The shuffled control permutes
-the complete semantic row—including score, confidence and availability—inside each split while
+the complete semantic row-including score, confidence and availability-inside each split while
 leaving prices, rates and labels fixed.
 
 ## Monitoring
