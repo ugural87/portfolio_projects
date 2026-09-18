@@ -1,0 +1,55 @@
+project_name: nyc-taxi-duration
+random_seed: 42
+timezone: America/New_York
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  source_url_template: https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_{year}-{month:02d}.parquet
+  min_duration_minutes: 1.0
+  max_duration_minutes: 120.0
+  min_passenger_count: 1
+  max_passenger_count: 6
+  # 264 = Unknown, 265 = Outside of NYC in the TLC zone lookup; neither is a routable zone.
+  valid_zone_min: 1
+  valid_zone_max: 263
+  training_window_months: 3
+  source_lookback_months: 6
+  drop_exact_duplicates: true
+split:
+  train_fraction: 0.70
+  validation_fraction: 0.15
+model:
+  name: hist_gradient_boosting
+  zone_encoding: target
+  max_iter: 200
+  learning_rate: 0.08
+  max_leaf_nodes: 31
+  l2_regularization: 1.0
+  min_samples_leaf: 30
+  target_encoder_cv: 5
+gates:
+  max_validation_mae_minutes: 9.0
+  max_test_mae_minutes: 9.5
+  max_p95_absolute_error_minutes: 30.0
+  min_improvement_vs_baseline: 0.05
+  max_validation_test_gap: 2.0
+  # Non-inferiority margin, relative to champion MAE. Must be > 0: with 0 the gate becomes a
+  # superiority test and blocks ~95% of retrains that are exactly as good as the champion.
+  max_regression_vs_champion: 0.01
+  max_rejection_rate: 0.10
+  max_out_of_period_rate: 0.01
+  max_duplicate_rate: 0.01
+  min_valid_rows: 10000
+  champion_confidence_level: 0.95
+serving:
+  host: 0.0.0.0
+  port: 8000
+  prediction_lower_bound: 1.0
+  prediction_upper_bound: 120.0
+monitoring:
+  reference_path: artifacts/reference_profile.json
+  psi_warning: 0.10
+  psi_critical: 0.25
+  max_invalid_rate: 0.05
+  max_unseen_route_rate: 0.20
+  performance_window: 1000

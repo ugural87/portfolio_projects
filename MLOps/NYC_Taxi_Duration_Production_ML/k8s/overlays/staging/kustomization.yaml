@@ -1,0 +1,3 @@
+resources: [../../base]
+namespace: taxi-staging
+# images: set at deploy time by the CD workflow (digest-pinned); do not hand-edit.

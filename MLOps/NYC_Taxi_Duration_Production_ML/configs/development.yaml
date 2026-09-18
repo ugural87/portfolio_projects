@@ -1,0 +1,9 @@
+extends: base.yaml
+environment: development
+model:
+  max_iter: 80
+  min_samples_leaf: 10
+gates:
+  max_validation_mae_minutes: 15.0
+  max_test_mae_minutes: 15.0
+  min_valid_rows: 100

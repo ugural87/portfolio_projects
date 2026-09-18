@@ -1,0 +1,10 @@
+.git
+.github
+.venv
+data
+mlruns
+tests
+notebooks
+reports
+champion
+*.zip

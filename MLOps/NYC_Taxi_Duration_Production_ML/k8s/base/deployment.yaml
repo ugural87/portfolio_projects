@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: taxi-duration-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels: {app: taxi-duration-api}
+  template:
+    metadata:
+      labels: {app: taxi-duration-api}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        prometheus.io/path: /metrics
+    spec:
+      securityContext: {runAsNonRoot: true}
+      containers:
+        - name: api
+          # Logical image name. The CD workflow pins it to an immutable registry digest with
+          # `kustomize edit set image taxi-duration-api=<registry>/<image>@sha256:...`.
+          image: taxi-duration-api
+          ports: [{name: http, containerPort: 8000}]
+          env:
+            - {name: TAXI_CONFIG_PATH, value: /app/configs/production.yaml}
+          resources:
+            requests: {cpu: 100m, memory: 256Mi}
+            limits: {cpu: 1000m, memory: 1Gi}
+          readinessProbe:
+            httpGet: {path: /health/ready, port: http}
+            initialDelaySeconds: 10
+          livenessProbe:
+            httpGet: {path: /health/live, port: http}
+            initialDelaySeconds: 20
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: {drop: ["ALL"]}
+          volumeMounts:
+            - {name: tmp, mountPath: /tmp}
+      volumes:
+        - name: tmp
+          emptyDir: {sizeLimit: 64Mi}

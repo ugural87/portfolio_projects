@@ -1,0 +1,30 @@
+services:
+  api:
+    build: .
+    image: nyc-taxi-duration:local
+    ports: ["8000:8000"]
+    environment:
+      TAXI_CONFIG_PATH: /app/configs/development.yaml
+      TAXI_MODEL_PATH: /app/artifacts/model.joblib
+      TAXI_METADATA_PATH: /app/artifacts/metadata.json
+    volumes:
+      - ./artifacts:/app/artifacts:ro
+    restart: unless-stopped
+    read_only: true
+    tmpfs: [/tmp]
+    security_opt: ["no-new-privileges:true"]
+  prometheus:
+    image: prom/prometheus:v2.55.1
+    ports: ["9090:9090"]
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on: [api]
+  grafana:
+    image: grafana/grafana:11.3.1
+    ports: ["3000:3000"]
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: ${GRAFANA_ADMIN_PASSWORD:-change-me}
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+    depends_on: [prometheus]
+

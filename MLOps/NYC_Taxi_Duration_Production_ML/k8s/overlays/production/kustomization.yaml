@@ -1,0 +1,11 @@
+resources: [../../base]
+namespace: taxi-production
+# images: set at deploy time by the CD workflow (digest-pinned); do not hand-edit.
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 3
+    target:
+      kind: Deployment
+      name: taxi-duration-api
