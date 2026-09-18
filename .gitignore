@@ -28,3 +28,7 @@ __pycache__/
 
 # Excluded projects
 /us10y_fomc_llm_forecasting/UA-OHY_time_series/
+
+# Keep the NYC Taxi Python data package; ignore only generated datasets.
+!MLOps/NYC_Taxi_Duration_Production_ML/src/taxi_duration/data/
+!MLOps/NYC_Taxi_Duration_Production_ML/src/taxi_duration/data/**
