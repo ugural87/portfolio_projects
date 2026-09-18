@@ -16,9 +16,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1 \
     TAXI_CONFIG_PATH=/app/configs/production.yaml \
     TAXI_MODEL_PATH=/app/artifacts/model.joblib \
     TAXI_METADATA_PATH=/app/artifacts/metadata.json
+RUN apt-get update && \
+    apt-get upgrade -y && \
+    rm -rf /var/lib/apt/lists/*
 RUN adduser --disabled-password --gecos "" --uid ${APP_UID} appuser
 COPY --from=builder /wheels /wheels
-RUN python -m pip install --no-cache-dir /wheels/* && rm -rf /wheels
+RUN python -m pip install --no-cache-dir /wheels/* && \
+    python -m pip uninstall -y jaraco.context wheel setuptools pip && \
+    rm -rf /wheels /root/.cache/pip
 COPY configs ./configs
 COPY artifacts/model.joblib artifacts/model.joblib
 COPY artifacts/metadata.json artifacts/metadata.json
