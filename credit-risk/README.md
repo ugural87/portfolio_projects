@@ -5,6 +5,18 @@ End-to-end credit risk modelling on the most-used Kaggle credit risk dataset
 a staged, scenario-weighted **IFRS 9 expected credit loss** with every assumption
 stated and stress-tested.
 
+
+## System map
+
+```mermaid
+flowchart LR
+    A["Loan data"] --> B["PD model"]
+    B --> C["Probability calibration"]
+    C --> D["SICR and staging"]
+    D --> E["Scenario-weighted ECL"]
+    E --> F["Provision sensitivity"]
+```
+
 ## Why this framing
 
 Most credit-risk portfolio projects stop at a classifier and an AUC. But a probability

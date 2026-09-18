@@ -4,6 +4,19 @@ End-to-end churn modelling on the classic Kaggle bank churn dataset (10,000 cust
 built as a **decision system rather than a classifier**: the output is not a label but a
 calibrated probability feeding an explicit profit-maximizing contact policy.
 
+
+## System map
+
+```mermaid
+flowchart TD
+    A["Customer data"] --> B["Leakage-safe model comparison"]
+    B --> C["Probability calibration"]
+    C --> D["Cost-sensitive contact policy"]
+    D --> E["Profit and sensitivity analysis"]
+    A --> F["Activation propensity analysis"]
+    F --> G["Causal limits and diagnostics"]
+```
+
 ## Why this framing
 
 Churn is usually presented as binary classification and evaluated with accuracy or F1.

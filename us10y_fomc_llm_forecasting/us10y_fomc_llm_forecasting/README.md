@@ -15,6 +15,18 @@ it estimates whether the information later documented in the minutes would have 
 meeting-window price move if it had been perfectly available at the decision. It is not presented
 as a deployable real-time strategy.
 
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["Causal yield-curve features"] --> B["2D CNN and Transformer"]
+    C["Rate facts and grounded minutes features"] --> D["Masked policy tokens"]
+    B --> E["Bidirectional cross-attention"]
+    D --> E
+    E --> F["Direction, quantiles and conformal intervals"]
+```
+
 ## Leakage boundary
 
 The earlier monolithic design could reuse a price encoder selected using post-1993 observations in

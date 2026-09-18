@@ -4,6 +4,18 @@ An executed, end-to-end fraud project covering rare-event prediction, temporal v
 
 The repository treats fraud detection as a decision system. The final object is a calibrated score plus a frozen review policy under explicit capacity and cost assumptions.
 
+
+## Decision-system map
+
+```mermaid
+flowchart LR
+    A["Transactions"] --> B["Chronological partitions"]
+    B --> C["Model comparison"]
+    C --> D["Held-out calibration"]
+    D --> E["Capacity-constrained policy"]
+    E --> F["Frozen final evaluation"]
+```
+
 ## What is fixed in this version
 
 - Downloads the canonical raw OpenML ARFF so the `Time` row identifier is retained.

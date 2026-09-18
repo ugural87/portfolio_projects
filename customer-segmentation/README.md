@@ -5,6 +5,18 @@ Unsupervised segmentation of 4,338 customers built from 400k+ retail transaction
 segment - and, just as importantly, to an honest statement of **how much structure this
 data actually contains.**
 
+
+## Research map
+
+```mermaid
+flowchart LR
+    A["Transaction log"] --> B["RFM+ customer features"]
+    B --> C["K-Means and DBSCAN"]
+    C --> D["PCA and t-SNE diagnostics"]
+    D --> E["Segment profiles"]
+    E --> F["Actions and key accounts"]
+```
+
 ## Why this framing
 
 Clustering projects usually end at "here are five segments" with no evidence that five
