@@ -1,14 +1,15 @@
-**/data/*
+# Local datasets: downloaded or generated, never tracked.
+# Scoped per project so that Python packages named "data" are not caught.
+bank-churn/data/*
+bank-churn/notebooks/data/
+credit-risk/data/*
+credit-risk/notebooks/data/
+customer-segmentation/data/*
+customer-segmentation/notebooks/data/
+fraud-detection/data/*
+MLOps/NYC_Taxi_Duration_Production_ML/data/
+us10y_fomc_llm_forecasting/us10y_fomc_llm_forecasting/data/
 !**/data/.gitkeep
-__pycache__/
-*.pyc
-.ipynb_checkpoints/
-.venv/
-.DS_Store
-.vscode/
-# Exception: TCMB PolicyRAG ships its crawled corpus (data/raw, data/parts) with the repo.
-# Temporary workaround for the monorepo-wide data rule; scope that rule per project later.
-!GenAI/tcmb-policyrag/data/*
 
 # Local credentials and environments
 .env
@@ -22,7 +23,15 @@ __pycache__/
 *.py[cod]
 *.egg-info/
 .ipynb_checkpoints/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
 .DS_Store
+
+# Editor and agent tooling
+.vscode/
+.claude/
+.agents/
 
 # Archives and model weights
 *.zip
@@ -31,10 +40,3 @@ __pycache__/
 
 # Excluded projects
 /us10y_fomc_llm_forecasting/UA-OHY_time_series/
-
-# Keep the NYC Taxi Python data package; ignore only generated datasets.
-!MLOps/NYC_Taxi_Duration_Production_ML/src/taxi_duration/data/
-!MLOps/NYC_Taxi_Duration_Production_ML/src/taxi_duration/data/**
-
-.claude/
-.agents/
