@@ -16,15 +16,15 @@ flowchart TD
 
 ## Project map
 
-| Project | Problem | Main methods | Status |
-| --- | --- | --- | --- |
-| [Bank Customer Churn](./bank-churn/) | Retention targeting under explicit campaign economics | Logistic regression, XGBoost, LightGBM, calibration, cost-sensitive policy and propensity analysis | Complete |
-| [Credit Risk and IFRS 9](./credit-risk/) | PD estimation carried into staged, scenario-weighted expected credit loss | XGBoost, SHAP, calibration, SICR, LGD, EAD and ECL sensitivity | Complete |
-| [Customer Segmentation](./customer-segmentation/) | Whether transaction behaviour contains defensible customer groups | RFM+, K-Means, DBSCAN, PCA, t-SNE and action mapping | Complete |
-| [Credit Card Fraud Decision System](./fraud-detection/) | Rare-event detection under review-capacity and cost constraints | Temporal CV, imbalance methods, focal-loss MLP, calibration and frozen policy evaluation | Complete |
-| [US10Y and FOMC Forecasting](./us10y_fomc_llm_forecasting/) | Whether information in FOMC minutes adds signal beyond prices and rate facts | 2D-CNN, Transformer, LLM semantic extraction, cross-attention, walk-forward and ablations | Complete |
-| [TCMB PolicyRAG](./GenAI/tcmb-policyrag/) | Answering questions on TCMB policy announcements with answers traceable to the source text | Crawled announcement corpus, token-aware chunking, embeddings, FAISS retrieval with date and instrument filters, citation-validated generation, retrieval benchmark | Complete |
-| [NYC Taxi Production ML](./MLOps/NYC_Taxi_Duration_Production_ML/) | Taking a regression model into a tested inference and release system | FastAPI, Docker, CI/CD, monitoring, Kubernetes, release gates and artifact lineage | Complete |
+| Project                                                           | Problem                                                                                    | Main methods                                                                                                                                                        | Status   |
+| ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| [Bank Customer Churn](./bank-churn/)                               | Retention targeting under explicit campaign economics                                      | Logistic regression, XGBoost, LightGBM, calibration, cost-sensitive policy and propensity analysis                                                                  | Complete |
+| [Credit Risk and IFRS 9](./credit-risk/)                           | PD estimation carried into staged, scenario-weighted expected credit loss                  | XGBoost, SHAP, calibration, SICR, LGD, EAD and ECL sensitivity                                                                                                      | Complete |
+| [Customer Segmentation](./customer-segmentation/)                  | Whether transaction behaviour contains defensible customer groups                          | RFM+, K-Means, DBSCAN, PCA, t-SNE and action mapping                                                                                                                | Complete |
+| [Credit Card Fraud Decision System](./fraud-detection/)            | Rare-event detection under review-capacity and cost constraints                            | Temporal CV, imbalance methods, focal-loss MLP, calibration and frozen policy evaluation                                                                            | Complete |
+| [US10Y and FOMC Forecasting](./us10y_fomc_llm_forecasting/)        | Whether information in FOMC minutes adds signal beyond prices and rate facts               | 2D-CNN, Transformer, LLM semantic extraction, cross-attention, walk-forward and ablations                                                                           | Complete |
+| [TCMB PolicyRAG](./GenAI/tcmb-policyrag/)                          | Answering questions on TCMB policy announcements with answers traceable to the source text | Crawled announcement corpus, token-aware chunking, embeddings, FAISS retrieval with date and instrument filters, citation-validated generation, retrieval benchmark | Complete |
+| [NYC Taxi Production ML](./MLOps/NYC_Taxi_Duration_Production_ML/) | Taking a regression model into a tested inference and release system                       | FastAPI, Docker, CI/CD, monitoring, Kubernetes, release gates and artifact lineage                                                                                  | Complete |
 
 ## How the work fits together
 
@@ -143,4 +143,3 @@ portfolio_projects/
 ```
 
 Each project README contains its own data contract, methods, results, limitations and reproduction instructions. This page is the map across projects.
-
