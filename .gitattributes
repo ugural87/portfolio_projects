@@ -1,0 +1,3 @@
+# Raw HTML documents collected by the PolicyRAG ingestion pipeline.
+# These are data artifacts, not HTML source code.
+GenAI/tcmb-policyrag/data/**/*.html linguist-generated=true
