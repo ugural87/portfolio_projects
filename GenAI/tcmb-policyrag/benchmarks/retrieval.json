@@ -1,0 +1,50 @@
+[
+  {
+    "id": "rr-credit-growth-2019",
+    "question": "2019 yılında zorunlu karşılık oranlarının kredi büyümesiyle ilişkilendirildiği karar hangisidir?",
+    "relevant_announcements": ["2019-34"],
+    "filters": {"date_from": "2019-01-01", "date_to": "2019-12-31"}
+  },
+  {
+    "id": "selective-credit-2023",
+    "question": "2023 Temmuz ayında seçici kredi ve miktarsal sıkılaştırma kapsamında hangi kararlar alındı?",
+    "relevant_announcements": ["2023-28"]
+  },
+  {
+    "id": "kkm-transition-2023",
+    "question": "KKM hesaplarından Türk lirası mevduata geçişi teşvik eden 2023 kararı hangisidir?",
+    "relevant_announcements": ["2023-31"]
+  },
+  {
+    "id": "simplification-2024",
+    "question": "Nisan 2024 makroihtiyati sadeleşme adımında ne değişti?",
+    "relevant_announcements": ["2024-19"],
+    "filters": {"date_from": "2024-04-01", "date_to": "2024-04-30"}
+  },
+  {
+    "id": "reserve-rates-may-2024",
+    "question": "23 Mayıs 2024 kararında TL mevduat ve KKM zorunlu karşılık oranları nasıl değişti?",
+    "relevant_announcements": ["2024-29"]
+  },
+  {
+    "id": "securities-maintenance-end",
+    "question": "Menkul kıymet tesisi uygulaması hangi duyuruyla sonlandırıldı?",
+    "relevant_announcements": ["2024-28"]
+  },
+  {
+    "id": "macroprudential-july-2024",
+    "question": "20 Temmuz 2024 tarihinde makroihtiyati çerçevede ne değişti?",
+    "relevant_announcements": ["2024-38"]
+  },
+  {
+    "id": "macroprudential-jan-2025",
+    "question": "4 Ocak 2025 makroihtiyati kararının kapsamı nedir?",
+    "relevant_announcements": ["2025-02"]
+  },
+  {
+    "id": "macroprudential-jan-2026",
+    "question": "31 Ocak 2026 zorunlu karşılık düzenlemesi neyi değiştirdi?",
+    "relevant_announcements": ["2026-06"]
+  }
+]
+

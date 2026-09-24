@@ -1,0 +1,57 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "tcmb-policyrag"
+version = "1.0.5"
+description = "Auditable RAG over TCMB macroprudential policy announcements"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "faiss-cpu>=1.8,<2",
+  "numpy>=1.26,<3",
+  "openai>=1.66,<3",
+  "pydantic>=2.8,<3",
+  "python-dotenv>=1.0,<2",
+  "streamlit>=1.38,<2",
+  "tiktoken>=0.7,<1",
+  "typer>=0.12,<1",
+]
+
+[project.optional-dependencies]
+dev = ["build>=1,<2", "pytest>=8,<9", "pytest-cov>=5,<7", "ruff>=0.6,<1", "mypy>=1.11,<2"]
+crawl = ["PyMuPDF>=1.24,<2"]
+
+[project.scripts]
+tcmb-rag = "tcmb_policyrag.cli:app"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/tcmb_policyrag"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+"scripts/tcmb_crawler.py" = ["E501"]
+"src/tcmb_policyrag/cli.py" = ["B008"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["src"]
+
+[[tool.mypy.overrides]]
+module = ["faiss", "faiss.*"]
+follow_imports = "skip"
+follow_imports_for_stubs = true
+ignore_missing_imports = true

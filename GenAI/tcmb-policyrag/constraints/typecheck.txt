@@ -1,0 +1,3 @@
+# mypy targets the package's Python 3.11 minimum. NumPy 2.5 stubs use syntax
+# that requires Python 3.12, so the type-check environment stays on 2.4.x.
+numpy<2.5
