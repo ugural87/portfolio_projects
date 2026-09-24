@@ -1,0 +1,154 @@
+{
+  "discovered": 478,
+  "selected": 3,
+  "exported": 3,
+  "failures": 0,
+  "errors": [],
+  "excluded_documents": [
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2019-06)",
+      "date": "2019-01-30",
+      "archive_year": 2019,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2019/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/d41fdc02-aa37-4dd2-b217-cea08a0cf11d/DUY2019-06.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-d41fdc02-aa37-4dd2-b217-cea08a0cf11d-myv3PqI"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2020-06)",
+      "date": "2020-01-31",
+      "archive_year": 2020,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2020/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/1387030b-e9f4-4443-9c31-e059b82f06e2/DUY2020-06.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-1387030b-e9f4-4443-9c31-e059b82f06e2-m.XVVFe"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2021-07)",
+      "date": "2021-02-02",
+      "archive_year": 2021,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2021/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/8b168543-cb45-4d64-ae64-0069f4b7595c/DUY2021-07.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8b168543-cb45-4d64-ae64-0069f4b7595c-ntxzAew"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2022-09)",
+      "date": "2022-01-31",
+      "archive_year": 2022,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2022/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/72b7529e-e9b1-49f1-8d11-bca121dd45fb/DUY2022-09.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-72b7529e-e9b1-49f1-8d11-bca121dd45fb-nWLWqyp"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2023-07)",
+      "date": "2023-01-31",
+      "archive_year": 2023,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2023/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/65eacaa3-4af5-4066-88fb-44efc3f065eb/DUY2023-07.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-65eacaa3-4af5-4066-88fb-44efc3f065eb-oo7JA6P"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Başkan Yardımcısı Hatice Karahan’ın \"Para Politikası Aktarım Mekanizması” Başlıklı Sunumu (İngilizce) (İstanbul)",
+      "date": "2024-07-11",
+      "archive_year": 2024,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2024/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/77f6f8a2-03de-4c86-a216-8c656ae10d98/SunumBY_HK11_07_2024.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-77f6f8a2-03de-4c86-a216-8c656ae10d98-p2yTY8l"
+      ],
+      "reason": "presentation_out_of_scope"
+    },
+    {
+      "title": "Başkan Yardımcısı Osman Cevdet Akçay’ın \"Bankacılık Sektörü ve Makroihtiyati Çerçeve” Başlıklı Sunumu (İngilizce) (İstanbul)",
+      "date": "2024-07-11",
+      "archive_year": 2024,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2024/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/8ac86bfe-441a-41db-8f38-ea89cf378bfb/SunumBY_CA11_07_2024.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-8ac86bfe-441a-41db-8f38-ea89cf378bfb-p5bA7GZ"
+      ],
+      "reason": "presentation_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2024-18)",
+      "date": "2024-04-05",
+      "archive_year": 2024,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2024/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/cd59ff19-f160-4e6f-8486-cd1e30691371/DUY2024-18.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-cd59ff19-f160-4e6f-8486-cd1e30691371-oWKEQen"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2025-10)",
+      "date": "2025-02-07",
+      "archive_year": 2025,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2025/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/f7742287-9b2b-43bd-94c2-b8d2f044de55/DUY2025-10.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-f7742287-9b2b-43bd-94c2-b8d2f044de55-pjw98Go"
+      ],
+      "reason": "open_letter_out_of_scope"
+    },
+    {
+      "title": "Başkan Yardımcısı Gazi İshak Kara’nın “Türkiye'de Enflasyon Dinamiklerinin Detaylı Analizi” Başlıklı Sunumu (Türkçe) (İstanbul)",
+      "date": "2026-07-10",
+      "archive_year": 2026,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/241f923c-8257-48e2-af69-a16831282fd7/SunumBY_GK_10_07_2026_2.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-241f923c-8257-48e2-af69-a16831282fd7-pZvKofS"
+      ],
+      "reason": "presentation_out_of_scope"
+    },
+    {
+      "title": "Başkan Yardımcısı Gazi İshak Kara’nın “Türkiye'de Enflasyon Dinamiklerinin Detaylı Analizi” Başlıklı Sunumu (İngilizce) (İstanbul)",
+      "date": "2026-07-10",
+      "archive_year": 2026,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/961e1408-381a-4794-90d1-347369cda45c/SunumBY_GK_10_07_2026.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-961e1408-381a-4794-90d1-347369cda45c-pZvOYb8"
+      ],
+      "reason": "presentation_out_of_scope"
+    },
+    {
+      "title": "Bankamız Kanunu'nun 42. Maddesi Uyarınca Hükûmete Gönderilen Açık Mektup (2026-15)",
+      "date": "2026-03-19",
+      "archive_year": 2026,
+      "archive_url": "https://www.tcmb.gov.tr/wps/wcm/connect/TR/TCMB+TR/Main+Menu/Duyurular/Basin/2026/",
+      "links": [
+        "https://www.tcmb.gov.tr/wps/wcm/connect/27e68bb3-1144-4136-97ee-05a918f7a07c/DUY2026-15.pdf?MOD=AJPERES&CACHEID=ROOTWORKSPACE-27e68bb3-1144-4136-97ee-05a918f7a07c-pQ4Hv03"
+      ],
+      "reason": "open_letter_out_of_scope"
+    }
+  ],
+  "unparsed_archive_boxes": [],
+  "scope": "all",
+  "discovered_by_year": {
+    "2019": 51,
+    "2020": 77,
+    "2021": 65,
+    "2022": 56,
+    "2023": 55,
+    "2024": 70,
+    "2025": 63,
+    "2026": 41
+  },
+  "exported_by_year": {
+    "2020": 1,
+    "2021": 1,
+    "2022": 1
+  },
+  "instrument_counts": {
+    "credit": 1,
+    "macroprudential": 1,
+    "securities_maintenance": 1
+  },
+  "date_mismatch_count": 0,
+  "unknown_date_count": 0,
+  "run_at_utc": "2026-09-24T14:47:18.312657+00:00"
+}

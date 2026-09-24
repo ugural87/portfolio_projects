@@ -1,0 +1,27 @@
+{
+  "discovered": 127,
+  "selected": 127,
+  "exported": 130,
+  "failures": 0,
+  "errors": [],
+  "scope": "all",
+  "discovered_by_year": {
+    "2019": 51,
+    "2020": 76
+  },
+  "exported_by_year": {
+    "2019": 51,
+    "2020": 76,
+    "unknown": 3
+  },
+  "instrument_counts": {
+    "credit": 52,
+    "deposit_and_kkm": 19,
+    "liquidity": 77,
+    "macroprudential": 16,
+    "reserve_requirements": 25
+  },
+  "date_mismatch_count": 0,
+  "unknown_date_count": 3,
+  "run_at_utc": "2026-09-24T06:45:16.992559+00:00"
+}

@@ -1,0 +1,11 @@
+.git
+.env
+.venv
+__pycache__
+.pytest_cache
+.ruff_cache
+.mypy_cache
+artifacts/index/embedding_cache
+artifacts/*.log
+data/full
+data/parts
